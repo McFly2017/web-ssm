@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mcfly.ssm.dao.GoodsDao">
+    <resultMap id="GoodsBaseMap" type="com.mcfly.ssm.model.Goods">
+        <id column="goods_id" property="id" jdbcType="INTEGER" />
+        <result column="goods_name" property="goodsName" jdbcType="VARCHAR" />
+        <result column="goods_info" property="goodsInfo" jdbcType="VARCHAR" />
+        <result column="goods_price" property="goodsPrice" jdbcType="DECIMAL" />
+    </resultMap>
+    <select id="selectById" parameterType="java.lang.Integer" resultMap="GoodsBaseMap">
+        SELECT * FROM goodsList
+        WHERE goods_id = ${id};
+    </select>
+    <select id="selectAllGoods" resultMap="GoodsBaseMap">
+        SELECT * FROM goodsList
+    </select>
+</mapper>
